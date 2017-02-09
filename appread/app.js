@@ -169,6 +169,8 @@ var app = (function(){  // jshint ignore:line
 
     self.submitMessageAsPhish = function(mailbox, dest_email) {
       var phishToForwardItem = mailbox.item;
+      var subject = phishToForwardItem.subject;
+      var reporterEmail = mailbox.userProfile.EmailAddress
 
       // Use GetItem to retreive info on the message we're forwarding...
       mailbox.makeEwsRequestAsync(getItemRequestSoap(phishToForwardItem.itemId), function(result) {
@@ -188,7 +190,7 @@ var app = (function(){  // jshint ignore:line
           phishToForwardItemIdElement = resultxml.getElementsByTagName("t:ItemId")[0];
           phishToForwardMimeContent = resultxml.getElementsByTagName("t:MimeContent")[0].innerHTML;
         }
-
+        debugger;
         // Create new message
         mailbox.makeEwsRequestAsync(createMessageRequestSoap(dest_email, "FW: " + phishToForwardItem.subject), function(result) {
 
