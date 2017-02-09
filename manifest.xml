@@ -10,8 +10,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Rapid7"/>
   <Description DefaultValue="Report phishing attempts"/>
-  <IconUrl DefaultValue="https://pbarry-r7.github.io/images/logo-r7-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://pbarry-r7.github.io/images/logo-r7-80.png"/>
+  <IconUrl DefaultValue="https://dmaloney-r7.github.io/images/logo-r7-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://dmaloney-r7.github.io/images/logo-r7-80.png"/>
   <Hosts>
     <Host Name="Mailbox"/>
   </Hosts>
@@ -23,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://pbarry-r7.github.io/appread/home/home.html"/>
+        <SourceLocation DefaultValue="https://dmaloney-r7.github.io/appread/home/home.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -63,13 +63,13 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="icon-16" DefaultValue="https://pbarry-r7.github.io/images/logo-r7-16.png"/>
-        <bt:Image id="icon-32" DefaultValue="https://pbarry-r7.github.io/images/logo-r7-32.png"/>
-        <bt:Image id="icon-80" DefaultValue="https://pbarry-r7.github.io/images/logo-r7-80.png"/>
+        <bt:Image id="icon-16" DefaultValue="https://dmaloney-r7.github.io/images/logo-r7-16.png"/>
+        <bt:Image id="icon-32" DefaultValue="https://dmaloney-r7.github.io/images/logo-r7-32.png"/>
+        <bt:Image id="icon-80" DefaultValue="https://dmaloney-r7.github.io/images/logo-r7-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="funcFile" DefaultValue="https://pbarry-r7.github.io/FunctionFile/Functions.html"/>
-        <bt:Url id="readPaneUrl" DefaultValue="https://pbarry-r7.github.io/appread/home/home.html?id=1249272a-ccc8-48a9-b3cf-8b7f845b8df9"/>
+        <bt:Url id="funcFile" DefaultValue="https://dmaloney-r7.github.io/FunctionFile/Functions.html"/>
+        <bt:Url id="readPaneUrl" DefaultValue="https://dmaloney-r7.github.io/appread/home/home.html?id=1249272a-ccc8-48a9-b3cf-8b7f845b8df9"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="Rapid7"/>
