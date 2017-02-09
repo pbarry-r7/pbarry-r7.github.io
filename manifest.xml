@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp
+    xsi:type="MailApp"
+    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+  <Id>efc17769-d8a3-4c55-b78f-c330be597b2b</Id>
+  <Version>0.0.0.1</Version>
+  <ProviderName>Rapid7, Inc.</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Rapid7"/>
+  <Description DefaultValue="Report phishing attempts"/>
+  <IconUrl DefaultValue="https://pbarry-r7.github.io/images/logo-r7-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://pbarry-r7.github.io/images/logo-r7-80.png"/>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="MailBox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://pbarry-r7.github.io/appread/home/home.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+  <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="funcFile"/>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadCmdGroup">
+                <Label resid="groupLabel"/>
+                <Control xsi:type="Button" id="msgReadPaneButton">
+                  <Label resid="msgReadPaneButtonLabel"/>
+                  <Supertip>
+                    <Title resid="msgReadPaneButtonTitle"/>
+                    <Description resid="msgReadPaneButtonDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon-16"/>
+                    <bt:Image size="32" resid="icon-32"/>
+                    <bt:Image size="80" resid="icon-80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="readPaneUrl"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon-16" DefaultValue="https://pbarry-r7.github.io/images/logo-r7-16.png"/>
+        <bt:Image id="icon-32" DefaultValue="https://pbarry-r7.github.io/images/logo-r7-32.png"/>
+        <bt:Image id="icon-80" DefaultValue="https://pbarry-r7.github.io/images/logo-r7-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="funcFile" DefaultValue="https://pbarry-r7.github.io/FunctionFile/Functions.html"/>
+        <bt:Url id="readPaneUrl" DefaultValue="https://pbarry-r7.github.io/appread/home/home.html?id=1249272a-ccc8-48a9-b3cf-8b7f845b8df9"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Rapid7"/>
+        <bt:String id="msgReadPaneButtonLabel" DefaultValue="Report Phish"/>
+        <bt:String id="msgReadPaneButtonTitle" DefaultValue="Report phishing attempt"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="msgReadPaneButtonDesc" DefaultValue="Report this email as a phishing attempt."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
