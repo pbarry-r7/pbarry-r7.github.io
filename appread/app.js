@@ -55,6 +55,30 @@ var app = (function(){  // jshint ignore:line
              '</soap:Envelope>';
     }
 
+    function moveItemRequestSoap(itemId, changeKey, destFolder) {
+      return '<?xml version="1.0" encoding="utf-8"?>' +
+             '<soap:Envelope' +
+             '  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' +
+             '  xmlns:xsd="http://www.w3.org/2001/XMLSchema"' +
+             '  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"' +
+             '  xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">' +
+             '  <soap:Header>' +
+             '    <RequestServerVersion Version="Exchange2013" xmlns="http://schemas.microsoft.com/exchange/services/2006/types" soap:mustUnderstand="0" />' +
+             '  </soap:Header>' +
+             '  <soap:Body>' +
+             '    <MoveItem' +
+             '      xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"' +
+             '      xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">' +
+             '      <ToFolderId>' +
+             '        <t:DistinguishedFolderId Id="' + destFolder + '"/>' +
+             '      </ToFolderId>' +
+             '      <ItemIds>' +
+             '        <t:ItemId Id="' + itemId + '" ChangeKey="' + changeKey + '"/>' +
+             '      </ItemIds>' +
+             '    </MoveItem>' +
+             '  </soap:Body>' +
+             '</soap:Envelope>';
+    }
 
     function replaceMessageStatus(item, message) {
         item.notificationMessages.replaceAsync("status", {
@@ -66,12 +90,12 @@ var app = (function(){  // jshint ignore:line
     }
 
     self.submitMessageAsPhish = function(mailbox, dest_email) {
-      var phishToForwardItem = mailbox.item;
-      var subject = phishToForwardItem.subject;
+      var phishToSubmitItem = mailbox.item;
+      var subject = phishToSubmitItem.subject;
       var reporterEmail = mailbox.userProfile.EmailAddress
 
-      // Use GetItem to retreive info on the message we're forwarding...
-      mailbox.makeEwsRequestAsync(getItemRequestSoap(phishToForwardItem.itemId), function(result) {
+      // Use GetItem to retreive info on the message we're submitting...
+      mailbox.makeEwsRequestAsync(getItemRequestSoap(phishToSubmitItem.itemId), function(result) {
         if (result.error != null) {
           self.showNotification("An error occured", "Please forward this message as an attachment to " + dest_email);
           return;
@@ -79,22 +103,35 @@ var app = (function(){  // jshint ignore:line
 
         var xmlparser = new DOMParser();
         var resultxml = xmlparser.parseFromString(result.value, "text/xml");
-        var phishToForwardItemIdElement = resultxml.getElementsByTagName("ItemId")[0];
-        var phishToForwardMimeContent;
-        if (phishToForwardItemIdElement) {
-          phishToForwardMimeContent = resultxml.getElementsByTagName("MimeContent")[0].innerHTML;
+        var phishToSubmitItemIdElement = resultxml.getElementsByTagName("ItemId")[0];
+        var phishToSubmitMimeContent;
+        if (phishToSubmitItemIdElement) {
+          phishToSubmitMimeContent = resultxml.getElementsByTagName("MimeContent")[0].innerHTML;
         } else {
           // IE and Outlook Desktop require the prepend...
-          phishToForwardItemIdElement = resultxml.getElementsByTagName("t:ItemId")[0];
-          phishToForwardMimeContent = resultxml.getElementsByTagName("t:MimeContent")[0].innerHTML;
+          phishToSubmitItemIdElement = resultxml.getElementsByTagName("t:ItemId")[0];
+          phishToSubmitMimeContent = resultxml.getElementsByTagName("t:MimeContent")[0].innerHTML;
         }
         var subject = mailbox.item.subject;
         var reporterEmail = mailbox.userProfile.emailAddress;
         var reporterName = mailbox.userProfile.displayName;
 
+        // TODO submit the message to the new endpoint here...!
+
+        replaceMessageStatus(phishToSubmitItem, " This email was submitted as a likely phish to Rapid7");
+
+        // Delete existing message
+        mailbox.makeEwsRequestAsync(moveItemRequestSoap(phishToSubmitItemIdElement.getAttribute("Id"),
+                                                        phishToSubmitItemIdElement.getAttribute("ChangeKey"),
+                                                        "deleteditems"), function(result) {
+          if (result.error != null) {
+            self.showNotification("An error occured", "Please go ahead and delete this message.");
+          }
+
+          self.showNotification("Message reported!", "Please close this window if it does not close automatically.");
+        }); // Move Item
       }); // Get Item
     }; // submitMessageAsPhish
-
   };
 
   return self;
