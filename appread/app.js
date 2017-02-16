@@ -135,7 +135,7 @@ var app = (function(){  // jshint ignore:line
 //          }
 
           //self.showNotification("Message reported!", "Please close this window if it does not close automatically.");
-        }); // Move Item
+//        }); // Move Item
       }); // Get Item
     }; // submitMessageAsPhish
   };
