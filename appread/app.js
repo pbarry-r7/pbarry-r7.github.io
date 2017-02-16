@@ -122,7 +122,7 @@ var app = (function(){  // jshint ignore:line
 
         // TODO submit the message to the new endpoint here...!
         // submissionUrl, 
-        self.showNotification("JSON is { 'subject': " + subject + ", 'name': " + reporterName + ", 'reply_address': " + reporterEmail + ", 'raw': " + phishToSubmitMimeContent + "}");
+        self.showNotification("JSON is { \"subject\": \"" + subject + "\", \"name\": \"" + reporterName + "\", \"reply_address\": \"" + reporterEmail + "\", \"raw\": \"" + phishToSubmitMimeContent + "\"}");
 
         replaceMessageStatus(phishToSubmitItem, " This email was submitted as a likely phish to Rapid7");
 
