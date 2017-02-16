@@ -81,15 +81,19 @@ var app = (function(){  // jshint ignore:line
     }
 
     function replaceMessageStatus(item, message) {
-        item.notificationMessages.replaceAsync("status", {
-          type: "informationalMessage",
-          icon: "icon-16",
-          message: message,
-          persistent: true
-        });
+      item.notificationMessages.replaceAsync("status", {
+        type: "informationalMessage",
+        icon: "icon-16",
+        message: message,
+        persistent: true
+      });
     }
 
-    self.submitMessageAsPhish = function(mailbox, dest_email) {
+    function submissionUrl(ingestion_key) {
+      return "http://localhost:8084/mail/" + ingestion_key;
+    }
+
+    self.submitMessageAsPhish = function(mailbox, ingestion_key, dest_email) {
       var phishToSubmitItem = mailbox.item;
       var subject = phishToSubmitItem.subject;
       var reporterEmail = mailbox.userProfile.EmailAddress
@@ -117,6 +121,8 @@ var app = (function(){  // jshint ignore:line
         var reporterName = mailbox.userProfile.displayName;
 
         // TODO submit the message to the new endpoint here...!
+        // submissionUrl, 
+        self.showNotification("JSON is { 'subject': " + subject + ", 'name': " + reporterName + ", 'reply_address': " + reporterEmail + ", 'raw': " + phishToSubmitMimeContent + "}");
 
         replaceMessageStatus(phishToSubmitItem, " This email was submitted as a likely phish to Rapid7");
 
@@ -128,7 +134,7 @@ var app = (function(){  // jshint ignore:line
             self.showNotification("An error occured", "Please go ahead and delete this message.");
           }
 
-          self.showNotification("Message reported!", "Please close this window if it does not close automatically.");
+          //self.showNotification("Message reported!", "Please close this window if it does not close automatically.");
         }); // Move Item
       }); // Get Item
     }; // submitMessageAsPhish

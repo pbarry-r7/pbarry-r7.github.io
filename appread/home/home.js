@@ -2,6 +2,7 @@
   'use strict';
 
   var params = {}
+  var ingestion_key = ""
   var dest_email = ""
 
   // The Office initialize function must be run each time a new page is loaded
@@ -15,6 +16,7 @@
       }
       if (params.id != null) {
         jQuery.getScript("../../conf/"+params.id+".js", function(){
+          ingestion_key = as_ingestion_key;
           dest_email = as_dest_email;
         });
       }
@@ -51,7 +53,7 @@
     jQuery('#report_button').click(function() {
       app.showNotification("Reporting email as phishing...");
 
-      app.submitMessageAsPhish(Office.context.mailbox, dest_email);
+      app.submitMessageAsPhish(Office.context.mailbox, ingestion_key, dest_email);
     });
     jQuery('#more_info_link').click(function() {
       jQuery('#more_info_text').css('display', 'inline');
