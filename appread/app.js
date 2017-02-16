@@ -89,7 +89,7 @@ var app = (function(){  // jshint ignore:line
       });
     }
 
-    function submissionUrl(ingestion_key) {
+    function submissionURL(ingestion_key) {
       return "http://localhost:8084/mail/" + ingestion_key;
     }
 
@@ -125,7 +125,7 @@ var app = (function(){  // jshint ignore:line
         //self.showNotification("JSON is { \"subject\": \"" + subject + "\", \"name\": \"" + reporterName + "\", \"reply_address\": \"" + reporterEmail + "\", \"raw\": \"" + phishToSubmitMimeContent + "\"}");
         var postData = { "subject": subject, "name": reporterName, "reply_address": reporterEmail, "raw": phishToSubmitMimeContent};
 
-        jQuery.post(submissionUrl(), postData, function(result) {
+        jQuery.post(submissionURL(ingestion_key), postData, function(result) {
 
           replaceMessageStatus(phishToSubmitItem, " This email was submitted as a likely phish to Rapid7");
 
