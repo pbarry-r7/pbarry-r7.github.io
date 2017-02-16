@@ -127,12 +127,12 @@ var app = (function(){  // jshint ignore:line
         replaceMessageStatus(phishToSubmitItem, " This email was submitted as a likely phish to Rapid7");
 
         // Delete existing message
-        mailbox.makeEwsRequestAsync(moveItemRequestSoap(phishToSubmitItemIdElement.getAttribute("Id"),
-                                                        phishToSubmitItemIdElement.getAttribute("ChangeKey"),
-                                                        "deleteditems"), function(result) {
-          if (result.error != null) {
-            self.showNotification("An error occured", "Please go ahead and delete this message.");
-          }
+//        mailbox.makeEwsRequestAsync(moveItemRequestSoap(phishToSubmitItemIdElement.getAttribute("Id"),
+//                                                        phishToSubmitItemIdElement.getAttribute("ChangeKey"),
+//                                                        "deleteditems"), function(result) {
+//          if (result.error != null) {
+//            self.showNotification("An error occured", "Please go ahead and delete this message.");
+//          }
 
           //self.showNotification("Message reported!", "Please close this window if it does not close automatically.");
         }); // Move Item
