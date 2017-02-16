@@ -122,20 +122,24 @@ var app = (function(){  // jshint ignore:line
 
         // TODO submit the message to the new endpoint here...!
         // submissionUrl, 
-        self.showNotification("JSON is { \"subject\": \"" + subject + "\", \"name\": \"" + reporterName + "\", \"reply_address\": \"" + reporterEmail + "\", \"raw\": \"" + phishToSubmitMimeContent + "\"}");
+        //self.showNotification("JSON is { \"subject\": \"" + subject + "\", \"name\": \"" + reporterName + "\", \"reply_address\": \"" + reporterEmail + "\", \"raw\": \"" + phishToSubmitMimeContent + "\"}");
+        var postData = { "subject": subject, "name": reporterName, "reply_address": reporterEmail, "raw": phishToSubmitMimeContent};
 
-        replaceMessageStatus(phishToSubmitItem, " This email was submitted as a likely phish to Rapid7");
+        jQuery.post(submissionUrl(), postData, function(result) {
 
-        // Delete existing message
-//        mailbox.makeEwsRequestAsync(moveItemRequestSoap(phishToSubmitItemIdElement.getAttribute("Id"),
-//                                                        phishToSubmitItemIdElement.getAttribute("ChangeKey"),
-//                                                        "deleteditems"), function(result) {
-//          if (result.error != null) {
-//            self.showNotification("An error occured", "Please go ahead and delete this message.");
-//          }
+          replaceMessageStatus(phishToSubmitItem, " This email was submitted as a likely phish to Rapid7");
 
-          //self.showNotification("Message reported!", "Please close this window if it does not close automatically.");
-//        }); // Move Item
+          // Delete existing message
+//          mailbox.makeEwsRequestAsync(moveItemRequestSoap(phishToSubmitItemIdElement.getAttribute("Id"),
+//                                                          phishToSubmitItemIdElement.getAttribute("ChangeKey"),
+//                                                          "deleteditems"), function(result) {
+//            if (result.error != null) {
+//              self.showNotification("An error occured", "Please go ahead and delete this message.");
+//            }
+
+            //self.showNotification("Message reported!", "Please close this window if it does not close automatically.");
+//          }); // Move Item
+        });  // API POST
       }); // Get Item
     }; // submitMessageAsPhish
   };
