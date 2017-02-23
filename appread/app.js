@@ -90,7 +90,8 @@ var app = (function(){  // jshint ignore:line
     }
 
     function submissionURL(ingestion_key) {
-      return "http://localhost:8084/mail/" + ingestion_key;
+      //return "http://localhost:8084/mail/" + ingestion_key;
+      return "http://127.0.0.1:8084/mail/" + ingestion_key;
     }
 
     self.submitMessageAsPhish = function(mailbox, ingestion_key, dest_email) {
