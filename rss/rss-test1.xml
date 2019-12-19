@@ -12,14 +12,16 @@
   </image>
   <ttl>5</ttl>
   <item>
-    <title>NEWW Topics</title>
+    <title>NO Topics</title>
     <link>https://www.attackerkb.com</link>
-    <description>New topics added to AKB</description>
+    <description>No topics added to AKB</description>
+    <guid isPermaLink="true">https://www.attackerkb.com</guid>
   </item>
   <item>
     <title>Assessments</title>
     <link>https://www.attackerkb.com</link>
     <description>New assessments added to AKB</description>
+    <guid isPermaLink="true">https://www.attackerkb.com</guid>
   </item>
 </channel>
 
