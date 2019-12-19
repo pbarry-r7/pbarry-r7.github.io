@@ -10,7 +10,13 @@
     <title>AttackerKB: The Attacker Knowledge Base</title>
     <link>https://www.attackerkb.com</link>
   </image>
-  <ttl>5</ttl>
+  <ttl>1</ttl>
+  <item>
+    <title>YO Topics</title>
+    <link>https://www.attackerkb.com/yo</link>
+    <description>Yo topics added to AKB</description>
+    <guid isPermaLink="true">https://www.attackerkb.com/yo</guid>
+  </item>
   <item>
     <title>NO Topics</title>
     <link>https://www.attackerkb.com</link>
