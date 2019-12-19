@@ -10,8 +10,9 @@
     <title>AttackerKB: The Attacker Knowledge Base</title>
     <link>https://www.attackerkb.com</link>
   </image>
+  <ttl>5</ttl>
   <item>
-    <title>NEW Topics</title>
+    <title>NEWW Topics</title>
     <link>https://www.attackerkb.com</link>
     <description>New topics added to AKB</description>
   </item>
