@@ -15,13 +15,13 @@
     <title>NO Topics</title>
     <link>https://www.attackerkb.com</link>
     <description>No topics added to AKB</description>
-    <guid isPermaLink="true">https://www.attackerkb.com</guid>
+    <guid isPermaLink="true">https://www.attackerkb.com/topics</guid>
   </item>
   <item>
     <title>Assessments</title>
     <link>https://www.attackerkb.com</link>
     <description>New assessments added to AKB</description>
-    <guid isPermaLink="true">https://www.attackerkb.com</guid>
+    <guid isPermaLink="true">https://www.attackerkb.com/assessments</guid>
   </item>
 </channel>
 
