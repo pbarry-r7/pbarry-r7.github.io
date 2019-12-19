@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>AttackerKB: The Attacker Knowledge Base</title>
+  <link>https://www.attackerkb.com</link>
+  <description>Not All Vulns Are Created Equal</description>
+  <image>
+    <url>https://www.attackerkb.com/static/public/img/logo-dark.png</url>
+    <title>AttackerKB: The Attacker Knowledge Base</title>
+    <link>https://www.attackerkb.com</link>
+  </image>
+  <item>
+    <title>Topics</title>
+    <link>https://www.attackerkb.com</link>
+    <description>New topics added to AKB</description>
+  </item>
+  <item>
+    <title>Assessments</title>
+    <link>https://www.attackerkb.com</link>
+    <description>New assessments added to AKB</description>
+  </item>
+</channel>
+
+</rss>
