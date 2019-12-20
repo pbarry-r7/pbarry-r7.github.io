@@ -10,20 +10,14 @@
     <title>AttackerKB: The Attacker Knowledge Base</title>
     <link>https://www.attackerkb.com</link>
   </image>
-  <ttl>1</ttl>
-  <lastBuildDate>Thu, 20 Dec 2019 01:10:59 GMT</lastBuildDate>
+  <ttl>15</ttl>
+  <lastBuildDate>Fri, 20 Dec 2019 01:20:59 GMT</lastBuildDate>
   <item>
     <title>20 New Topics Available!</title>
     <link>https://www.attackerkb.com/topics</link>
     <description>Newo topics added to AKB</description>
     <guid isPermaLink="true">https://www.attackerkb.com/topics</guid>
-    <pubDate>Thu, 19 Dec 2019 01:01:55 GMT</pubDate>
-  </item>
-  <item>
-    <title>Assessments</title>
-    <link>https://www.attackerkb.com</link>
-    <description>New assessments added to AKB</description>
-    <guid isPermaLink="true">https://www.attackerkb.com/assessments</guid>
+    <pubDate>Fri, 19 Dec 2019 01:11:55 GMT</pubDate>
   </item>
 </channel>
 
